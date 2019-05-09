@@ -11,15 +11,15 @@ public class Carrinho{
             double total = 0.0; // Valor total da compra
 
             for(int i = 0; i < 4; i++){ // Lê os valores para serem inseridos
-                JOptionPane.showMessageDialog(null, "Inserção do produto " + (i + 1), "Produto " + (i + 1), JOptionPane.INFORMATION_MESSAGE);
+                JOptionPane.showMessageDialog(null, "Insercao do produto " + (i + 1), "Produto " + (i + 1), JOptionPane.INFORMATION_MESSAGE);
 
                 id[i] = JOptionPane.showInputDialog(null, "ID:", "Produto " + (i + 1), JOptionPane.QUESTION_MESSAGE); // ID
                 
-                description[i] = JOptionPane.showInputDialog(null, "Descrição:", "Produto " + (i + 1), JOptionPane.QUESTION_MESSAGE); // Descrição
+                description[i] = JOptionPane.showInputDialog(null, "Descricao:", "Produto " + (i + 1), JOptionPane.QUESTION_MESSAGE); // Descrição
                 
                 quantity[i] = Integer.parseInt(JOptionPane.showInputDialog(null, "Quantidade:", "Produto " + (i + 1), JOptionPane.QUESTION_MESSAGE)); // Quantidade
 
-                unity_price[i] = Double.parseDouble(JOptionPane.showInputDialog(null, "Preço:", "Produto " + (i + 1), JOptionPane.QUESTION_MESSAGE)); // Preço
+                unity_price[i] = Double.parseDouble(JOptionPane.showInputDialog(null, "Preco:", "Produto " + (i + 1), JOptionPane.QUESTION_MESSAGE)); // Preço
             }
 
             Item item1 = new Item(id[0], description[0], quantity[0], unity_price[0]); // Insere os valores do item1
