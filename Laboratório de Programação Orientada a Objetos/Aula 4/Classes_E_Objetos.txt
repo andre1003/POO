@@ -1,7 +1,0 @@
-Classes e Objetos
-
-Classe é uma abstração de um conjunto de objetos.
-Construtor inicializa um objeto.
-get acessa um valor e set altera um valor.
-
-Ex: Ter uma classe geral Pessoa com métodos a desejar. Passa a quantidade de km que a pessoa andou e contar a quantidade de passos que a pessoa deu, definir quanto vale o passo (o usuário define).
