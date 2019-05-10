@@ -1,0 +1,15 @@
+Lab. POO
+Conteúdo:
+1) Ambiente de desenvolvimento
+2) Conceitos básicos de Linguagem Orientada a Objetos
+3) Classes e Objetos
+4) Controle de acesso
+5) Relacionamento entre objetos
+6) Herança e Polimorfismo
+7) Biblioteca de Classes e Coleções
+
+Bibliografia Básica:
+1) SINTES, A. "Aprenda programação orientada a objetos em 21 dias", Pearson
+2) VAREJÃO, F.M. "Linguagens de programação: Java, C e C++ e outras: conceitos e técnicas", Campus
+3) DEITEL, H.M. & DEITEL, P.J. "Java: como programar", PEARSON
+4) SAVITCH, W.J. "C++ absoluto", PEARSON
