@@ -6,14 +6,11 @@ public class Pessoa{
 	private double km;
 	private double passo;
 
-	public void Pessoa(String nome, int idade, double altura){ // Construtor
+	public Pessoa(String nome, int idade, double altura, double passada){ // Construtor
 		this.nome = nome;
 		this.idade = idade;
 		this.altura = altura;
-		if(peso <= 80.0)
-			this.passada = altura - (peso / 100);
-		else
-			this.passada = altura - 0.2;
+		this.passada = passada;
 	}
 
 	public void setPassada(double passada){ // Define a passada
@@ -26,6 +23,10 @@ public class Pessoa{
 
 	public double getPassada(){ // Acessa o valor de passada
 		return this.passada;
+	}
+
+	public String getNome(){
+		return this.nome;
 	}
 
 	public double Passos(){ // Conta os passos
