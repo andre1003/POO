@@ -1,7 +1,6 @@
 import java.util.InputMismatchException;
-
 import  javax.swing.JOptionPane;
-// FALTA O TRY-CATCH
+
 public class Main{
     public static void main(String args[]){
         String nome;
@@ -29,7 +28,8 @@ public class Main{
             p.setKm(Double.parseDouble(JOptionPane.showInputDialog(null, "Quantos km você andou?", "Quilômetros", JOptionPane.QUESTION_MESSAGE)));
             
             // Mostra a quantidade de passos que foram dados
-            JOptionPane.showMessageDialog(null, "Parabéns " + p.getNome() + "!" + "\nVocê deu " + p.Passos() + " passos!", "Passos", JOptionPane.INFORMATION_MESSAGE);
+            JOptionPane.showMessageDialog(null, "Parabéns " + p.getNome() + "!" + "\nVocê deu " 
+            + p.Passos() + " passos tendo " + p.getIdade() + " e " + p.getAltura() + " de altura!\nVocê é o bixão!", "Passos", JOptionPane.INFORMATION_MESSAGE);
         }
         catch(NumberFormatException e){ // Caso seja inserido caracteres ao invés de números
             JOptionPane.showMessageDialog(null, "Insira somente números", "Erro!", JOptionPane.ERROR_MESSAGE);

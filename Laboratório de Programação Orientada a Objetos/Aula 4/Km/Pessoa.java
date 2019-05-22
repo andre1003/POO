@@ -25,8 +25,16 @@ public class Pessoa{
 		return this.passada;
 	}
 
-	public String getNome(){
+	public String getNome(){ // Acessa o valor do nome
 		return this.nome;
+	}
+
+	public int getIdade(){ // Acessa o valor da idade
+		return idade;
+	}
+
+	public double getAltura(){ // Acessa o valor da altura
+		return altura;
 	}
 
 	public double Passos(){ // Conta os passos
