@@ -1,6 +1,6 @@
 import javax.swing.JOptionPane;
 
-public class Pessoa{
+public abstract class Pessoa{
     private String nome;
     private int idade;
 
@@ -17,8 +17,5 @@ public class Pessoa{
         return idade;
     }
 
-    public void getDados(){
-        JOptionPane.showMessageDialog(null, "Aluno: " + getNome() + "\nIdade: " + getIdade(),
-         "Dados", JOptionPane.INFORMATION_MESSAGE);
-    }
+    public abstract void getDados();
 }

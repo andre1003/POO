@@ -33,7 +33,7 @@ public class Main{
                 lista.add(p);
             }
 
-            op = JOptionPane.showOptionDialog(null, "Selecione uma das opções", "Aluno ou Professor"
+            op = JOptionPane.showOptionDialog(null, "Selecione uma das opções", "Continuar ou Parar"
             , JOptionPane.DEFAULT_OPTION, JOptionPane.INFORMATION_MESSAGE, null, fim, fim[0]);
             if(op == 1)
                 break;

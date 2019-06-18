@@ -12,13 +12,13 @@ public class PessoaJuridica extends Pessoa{
         return cnpj;
     }
 
-    public getTipo(){
+    public String getTipo(){
         return "Pessoa Jurídica";
     }
 
     public void getDados(){
-        JOptionPane.showMessageDialog(null, "Tipo: " + getDocumento() + "\nNome: " + getNome() + 
-        "\nEndereço: " + getEndereco() + "\nTelefone: " + getTel() + "\nE-mail: " + getEmail(), "Dados"
+        JOptionPane.showMessageDialog(null, "Tipo: " + getTipo() + "\nNome: " + getNome() + 
+        "\nEndereço: " + getEndereco() + "\nTelefone: " + getTel() + "\nE-mail: " + getEmail() + "\nCNPJ: " + getDocumento(), "Dados"
         , JOptionPane.INFORMATION_MESSAGE);
     }
 }
