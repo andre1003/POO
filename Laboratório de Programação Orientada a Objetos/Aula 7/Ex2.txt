@@ -1,0 +1,4 @@
+Criar, para a próxima aula, um programa que contenha as classes:
+- Principal: Animal
+- Filhas: Mamífero e Inseto
+Neste programa deve-se criar os atributos, métodos e o polimorfismo das classes.
