@@ -1,4 +1,6 @@
-public abstract class Animal{
+import javax.swing.JOptionPane;
+
+public class Animal{
     private String nome;
     private boolean vivo;
     private boolean extincao;
@@ -37,5 +39,13 @@ public abstract class Animal{
             return "Extinto";
         else
             return "Não está extinto";
+    }
+
+    public String locomover(){
+        return "Pé direito... Pé esquerdo... Pé direito... Pé esquerdo";
+    }
+
+    public void getDados(){
+        JOptionPane.showMessageDialog(null, "Nome: " + getNome() + "\nVivo: " + getVivo() + "\nExtinção: " + getExtincao(), "Dados", JOptionPane.INFORMATION_MESSAGE);
     }
 }

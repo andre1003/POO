@@ -1,4 +1,4 @@
-import javax.lang.model.util.ElementScanner6;
+import javax.swing.JOptionPane;
 
 public class Mamifero extends Animal{
     private boolean fome;
@@ -7,7 +7,7 @@ public class Mamifero extends Animal{
     public Mamifero(String nome, boolean vivo, boolean extincao, boolean fome, int nvl_raiva){
         super(nome, vivo, extincao);
         this.fome = fome;
-        this.nvl_raiva = nvl_raiva;
+        setRaiva(nvl_raiva);
     }
 
     public void setFome(boolean fome){
@@ -15,7 +15,12 @@ public class Mamifero extends Animal{
     }
 
     public void setRaiva(int nvl_raiva){
-        this.nvl_raiva = nvl_raiva;
+        if(nvl_raiva < 0)
+            this.nvl_raiva = 0;
+        else if(nvl_raiva > 10)
+            this.nvl_raiva = 10;
+        else
+            this.nvl_raiva = nvl_raiva;
     }
 
     public String getFome(){
@@ -32,5 +37,10 @@ public class Mamifero extends Animal{
             return "Ficando puto";
         else
             return "Pistolado";
+    }
+
+    public void getDados(){
+        JOptionPane.showMessageDialog(null, "Nome: " + getNome() + "\nVivo: " + getVivo() + "\nExtinto: " + getExtincao() + "\nFome: " + getFome()
+        + "\nRaiva: " + getRaiva() + "\nModo de locomoção: " + locomover(), "Dados", JOptionPane.INFORMATION_MESSAGE);
     }
 }
