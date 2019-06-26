@@ -7,7 +7,7 @@ public class Main{
         List<Animal> lista = new ArrayList<>();
         String nome;
         int veneno, nvl_raiva, op;
-        boolean vivo, extincao, pica, venenoso, fome;
+        boolean vivo, extincao, pica, venenoso, fome = false;
         String[] opcoes = {"Sim", "Não"};
         String[] animal = {"Mamífero", "Inseto"};
         Mamifero m;
@@ -29,12 +29,14 @@ public class Main{
                     else
                         extincao = false;
                     
-                    op = JOptionPane.showOptionDialog(null, "Está com fome?", "Sim ou Não", JOptionPane.DEFAULT_OPTION, JOptionPane.INFORMATION_MESSAGE, null, opcoes, opcoes[0]);
-                    if(op == 0)
-                        fome = true;
-                    else
-                        fome = false;
-                    nvl_raiva = Integer.parseInt(JOptionPane.showInputDialog(null, "Qual o nível da raiva (0 - 10)?", "Raiva", JOptionPane.QUESTION_MESSAGE));
+                    if(extincao == false){
+                        op = JOptionPane.showOptionDialog(null, "Está com fome?", "Sim ou Não", JOptionPane.DEFAULT_OPTION, JOptionPane.INFORMATION_MESSAGE, null, opcoes, opcoes[0]);
+                        if(op == 0)
+                            fome = true;
+                        else
+                            fome = false;
+                    }
+                    nvl_raiva = Integer.parseInt(JOptionPane.showInputDialog(null, "Qual o nível da raiva desse bixo (0 - 10)?", "Raiva", JOptionPane.QUESTION_MESSAGE));
                     m = new Mamifero(nome, vivo, extincao, fome, nvl_raiva);
                     lista.add(m);
                 }
