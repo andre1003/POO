@@ -1,0 +1,38 @@
+Projeto - Time de Futebol
+
+Entrega: até 31/07 às 15:00h
+
+- Código-fonte
+- Relatório do projeto (escrever o que e como fiz o projeto, e todos os conceitos de POO usados) - PDF
+
+Faça um programa em Java que simule a gestão de um time de futebol.
+
+Quais os funcionários?
+Quais informações específica precisamos?
+Seu programa deve receber o placar de 5 jogos do time. Com esses dados você deve responder:
+a) Quantos pontos o time fez?
+b) Quantos gols foram feitos e quantos foram tomados?
+Você deve permitir a geração dos seguintes relatórios:
+a) Funcionários (pelo tipo)
+b) Salários (pelo tipo)
+c) Score de gols por jogador
+
+================================================================================================================
+
+Abstração:
+O que um time de futebol tem:
+Funcionários:
+	Jogadores:
+	- 11 jogadores titulares (mín. 7)
+	- X máximo de jogadores no total
+	* Precisa-se de pé dominante, altura, peso, salário, direitos de imagem, gols marcados, idade.
+
+	Comissão técnica:
+	- 1 técnico
+	* Precisa-se de salário, número de títulos, idade.
+	- 1 assistente técnico
+	* Precisa-se de salário, idade.
+	- X massagistas
+
+
+
