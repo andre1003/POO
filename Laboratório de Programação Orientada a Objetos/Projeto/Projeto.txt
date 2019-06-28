@@ -24,7 +24,7 @@ O que um time de futebol tem:
 Funcionários:
 	Jogadores:
 	- 11 jogadores titulares (mín. 7)
-	- X máximo de jogadores no total
+	- 32 máximo de jogadores no total
 	* Precisa-se de pé dominante, altura, peso, salário, direitos de imagem, gols marcados, idade.
 
 	Comissão técnica:
@@ -32,7 +32,17 @@ Funcionários:
 	* Precisa-se de salário, número de títulos, idade.
 	- 1 assistente técnico
 	* Precisa-se de salário, idade.
-	- X massagistas
+	- 0.5 massagistas por jogador
+	* Precisa-se de salário e idade.
+
+Time:
+	Placar: armazenar 5 jogos. Armazenar total de pontos marcados, total de gols sofridos, total de gols feitos, saldo de gols, faltas cometidas, cartões amarelos, cartões vermelhos.
+	Metas: Traçar um objetivo inicial e verificar se foi cumprido, mostrar número de gols de cada jogador.
+	Funcionários: Cadastrar funcionários por seção (jogador, comiisão técnica), listar todos, listar por seção, folha de pagamento por seção.
+
+Pontos a sere considerados:
+	Se conseguir, fazer simulação do jogo, mostrando o placar ao vivo.
+	
 
 
 
