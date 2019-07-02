@@ -13,6 +13,9 @@ Seu programa deve receber o placar de 5 jogos do time. Com esses dados você dev
 a) Quantos pontos o time fez?
 b) Quantos gols foram feitos e quantos foram tomados?
 Você deve permitir a geração dos seguintes relatórios:
+-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
+Perguntar se posso fazer uma nota fiscal que englobe os funcionários e salários de todos ao mesmo tempo ao invéz de escolher o tipo
+-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
 a) Funcionários (pelo tipo)
 b) Salários (pelo tipo)
 c) Score de gols por jogador
