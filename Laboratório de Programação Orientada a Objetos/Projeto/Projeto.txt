@@ -1,6 +1,8 @@
 Projeto - Time de Futebol
 
 Entrega: até 31/07 às 15:00h
+Título do e-mail: Trab_LPOO_NomeSobrenome
+Dia 31/07 das 14h as 16h pode apresentar quem quiser
 
 - Código-fonte
 - Relatório do projeto (escrever o que e como fiz o projeto, e todos os conceitos de POO usados) - PDF
@@ -46,6 +48,8 @@ Time:
 Pontos a sere considerados:
 	Se conseguir, fazer simulação do jogo, mostrando o placar ao vivo.
 	
+
+FAZER UMA CLASSE TIME QUE POSSA PASSAR PARA TODAS AS TELAS A INFORMAÇÃO DO TIME
 
 
 
