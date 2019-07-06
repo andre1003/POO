@@ -1,6 +1,7 @@
 public class Time{
     private String nome;
     private String sigla;
+    private int partidas;
     private int pontos;
     private int vitorias;
     private int empates;
@@ -10,9 +11,10 @@ public class Time{
     private int cartao_amarelo;
     private int cartao_vermelho;
 
-    public Time(String nome, String sigla){
+    public Time(String nome, String sigla){ // Construtor
         this.nome = nome;
         this.sigla = sigla;
+        this.partidas = 0;
         this.pontos = 0;
         this.vitorias = 0;
         this.empates = 0;
@@ -23,83 +25,91 @@ public class Time{
         this.cartao_vermelho = 0;
     }
 
-    public String getNome() {
+    public String getNome() { // Método get para nome
         return nome;
     }
 
-    public void setNome(String nome) {
+    public void setNome(String nome) { // Método set para nome
         this.nome = nome;
     }
 
-    public String getSigla() {
+    public String getSigla() { // Método get para sigla
         return sigla;
     }
 
-    public void setSigla(String sigla) {
+    public void setSigla(String sigla) { // Método set para sigla
         this.sigla = sigla;
     }
 
-    public int getPontos() {
+    public int getPartidas(){ // Método get para partidas
+        return partidas;
+    }
+
+    public void setPartidas(int partidas){ // Método set para partidas
+        this.partidas = partidas;
+    }
+
+    public int getPontos() { // Método get para pontos
         return pontos;
     }
 
-    public void setPontos(int pontos) {
+    public void setPontos(int pontos) { // Método set para pontos
         this.pontos = pontos;
     }
 
-    public int getVitorias() {
+    public int getVitorias() { // Método get para vitórias
         return vitorias;
     }
 
-    public void setVitorias(int vitorias) {
+    public void setVitorias(int vitorias) { // Método set para vitórias
         this.vitorias = vitorias;
     }
 
-    public int getEmpates() {
+    public int getEmpates() { // Método get para empates
         return empates;
     }
 
-    public void setEmpates(int empates) {
+    public void setEmpates(int empates) { // Método set para empates
         this.empates = empates;
     }
 
-    public int getDerrotas() {
+    public int getDerrotas() { // Método get para derrotas
         return derrotas;
     }
 
-    public void setDerrotas(int derrotas) {
+    public void setDerrotas(int derrotas) { // Método set para derrotas
         this.derrotas = derrotas;
     }
 
-    public int getGolsMarcados() {
+    public int getGolsMarcados() { // Método get para gols marcados
         return gols_marcados;
     }
 
-    public void setGolsMarcados(int gols_marcados) {
+    public void setGolsMarcados(int gols_marcados) { // Método set para gols marcados
         this.gols_marcados = gols_marcados;
     }
 
-    public int getGolsSofridos() {
+    public int getGolsSofridos() { // Método get para gols sofridos
         return gols_sofridos;
     }
 
-    public void setGolsSofridos(int gols_sofridos) {
+    public void setGolsSofridos(int gols_sofridos) { // Método set para gols sofridos
         this.gols_sofridos = gols_sofridos;
     }
 
-    public int getCartaoAmarelo() {
+    public int getCartaoAmarelo() { // Método get para cartões amarelos
         return cartao_amarelo;
     }
 
-    public void setCartaoAmarelo(int cartao_amarelo) {
+    public void setCartaoAmarelo(int cartao_amarelo) { // Método set para cartões amarelos
         this.cartao_amarelo = cartao_amarelo;
     }
 
-    public int getCartaoVermelho() {
+    public int getCartaoVermelho() { // Método get para cartões vermelhos
         return cartao_vermelho;
     }
 
-    public void setCartaoVermelho(int cartao_vermelho) {
+    public void setCartaoVermelho(int cartao_vermelho) { // Método set para cartões vermelhos
         this.cartao_vermelho = cartao_vermelho;
     }
 }
