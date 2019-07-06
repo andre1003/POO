@@ -4,7 +4,7 @@ import java.util.List;
 import java.util.ArrayList;
 import javax.swing.UIManager.*;
 
-public class CadastroTime extends javax.swing.JFrame {
+public class Teste extends javax.swing.JFrame {
     public javax.swing.JButton btnCriar;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
@@ -16,7 +16,7 @@ public class CadastroTime extends javax.swing.JFrame {
     private Time time;
     private List<Funcionario> lista;
 
-    public CadastroTime() {
+    public Teste() {
         initComponents();
     }
 
@@ -105,33 +105,22 @@ public class CadastroTime extends javax.swing.JFrame {
 
     private void btnCriarActionPerformed(java.awt.event.ActionEvent evt) { // Criar um novo time
         Gerenciamento g = new Gerenciamento(); // Inicializa os componentes da tela principal
-        lista = new ArrayList<>();
-        while(true){ // Inserir funcionários
-            String nome = JOptionPane.showInputDialog(null, "Insira o nome:", "Nome", JOptionPane.QUESTION_MESSAGE);
-            int idade = Integer.parseInt(JOptionPane.showInputDialog(null, "Insira a idade:", "Idade", JOptionPane.QUESTION_MESSAGE));
-            double salario = Double.parseDouble(JOptionPane.showInputDialog(null, "Insira o salário:", "Salário", JOptionPane.QUESTION_MESSAGE));
-            String tipo = JOptionPane.showInputDialog(null, "Insira o tipo:", "Tipo", JOptionPane.QUESTION_MESSAGE);
-            Funcionario f = new Funcionario(nome, idade, salario, tipo);
-            lista.add(f);
-            int op = Integer.parseInt(JOptionPane.showInputDialog(null, "0 - Continuar\n1 - Parar", "Decisões da vida", JOptionPane.QUESTION_MESSAGE));
-            if(op == 1)
-                break;
-        }
         time = new Time(tfdNome.getText(), tfdSigla.getText(), lista); // Cria um novo time
         g.setTime(time); // Passa o time para a tela principal
-        g.setLista(lista);
         this.dispose();
         g.setVisible(true);
+    }
+
+    public void setFuncionarios(List<Funcionario> lista){ // Método set para os funcionários
+        this.lista = lista;
     }
 
     public static void main(String args[]) {
         try {
             for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Metal".equals(info.getName())) {
-                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-                    break;
-                }
+                System.out.println(info.getName());
             }
+            javax.swing.UIManager.setLookAndFeel(javax.swing.UIManager.getSystemLookAndFeelClassName());
         } catch (ClassNotFoundException ex) {
             java.util.logging.Logger.getLogger(CadastroTime.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {

@@ -1,3 +1,7 @@
+import Funcionarios.Funcionario;
+import java.util.List;
+import java.util.ArrayList;
+
 public class Time{
     private String nome;
     private String sigla;
@@ -10,8 +14,9 @@ public class Time{
     private int gols_sofridos;
     private int cartao_amarelo;
     private int cartao_vermelho;
+    private List<Funcionario> lista;
 
-    public Time(String nome, String sigla){ // Construtor
+    public Time(String nome, String sigla, List<Funcionario> lista){ // Construtor
         this.nome = nome;
         this.sigla = sigla;
         this.partidas = 0;
@@ -23,6 +28,7 @@ public class Time{
         this.gols_sofridos = 0;
         this.cartao_amarelo = 0;
         this.cartao_vermelho = 0;
+        this.lista = lista;
     }
 
     public String getNome() { // Método get para nome
@@ -111,5 +117,20 @@ public class Time{
 
     public void setCartaoVermelho(int cartao_vermelho) { // Método set para cartões vermelhos
         this.cartao_vermelho = cartao_vermelho;
+    }
+
+    public List<Funcionario> getLista(){ // Método gete para a listade funcionários
+        return lista;
+    }
+
+    public void setLista(List<Funcionario> lista){ // Método set para a lista de funcionários
+        this.lista = lista;
+    }
+
+    public String getDados(){
+        return "Nome do time: " + getNome() + "\nSigla: " + getSigla() + "\nPartidas Jogadas: " + getPartidas() + "\nPontos: " 
+        + getPontos() + "\nVitórias: " + getVitorias() + "\nEmpates: " + getEmpates() + "\nDerrotas: " + getDerrotas() 
+        + "\nGols Marcados: " + getGolsMarcados() + "\nGols Sofridos: " + getGolsSofridos() + "\nSaldo de Gols: " + (getGolsMarcados() - getGolsSofridos())
+        + "\nCartões Amarelos: " + getCartaoAmarelo() + "\nCartões Vermelhos: " + getCartaoVermelho();
     }
 }

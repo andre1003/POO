@@ -1,12 +1,16 @@
-public abstract class Funcionario{
+package Funcionarios;
+
+public class Funcionario{
     private String nome;
     private int idade;
     private double salario;
+    private String tipo;
 
-    public Funcionario(String nome, int idade, double salario){ // Construtor
+    public Funcionario(String nome, int idade, double salario, String tipo){ // Construtor
         this.nome = nome;
         this.idade = idade;
         setSalario(salario);
+        this.tipo = tipo;
     }
 
     public void setNome(String nome){ // Método set para o nome
@@ -21,6 +25,10 @@ public abstract class Funcionario{
         this.salario = salario;
     }
 
+    public void setTipo(String tipo){
+        this.tipo = tipo;
+    }
+
     public String getNome(){ // Método get para o nome
         return nome;
     }
@@ -31,5 +39,9 @@ public abstract class Funcionario{
 
     public double getSalario(){ // Método get para o salário
         return salario;
+    }
+
+    public String getTipo(){
+        return tipo;
     }
 }

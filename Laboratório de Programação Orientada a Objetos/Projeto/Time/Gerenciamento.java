@@ -1,10 +1,14 @@
-
+import Funcionarios.Funcionario;
+import java.util.List;
+import java.util.ArrayList;
 import java.util.Random;
+
+import javax.swing.JOptionPane;
 
 public class Gerenciamento extends javax.swing.JFrame {
     
     public Gerenciamento() {
-        initComponents();  
+        initComponents();
     }
     
     @SuppressWarnings("unchecked")
@@ -50,7 +54,7 @@ public class Gerenciamento extends javax.swing.JFrame {
             }
         });
 
-        btnNotaFiscal.setText("Nota Fiscal");
+        btnNotaFiscal.setText("NF");
         btnNotaFiscal.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnNotaFiscalActionPerformed(evt);
@@ -79,6 +83,11 @@ public class Gerenciamento extends javax.swing.JFrame {
         });
 
         btnDetalhes.setText("Detalhes");
+        btnDetalhes.addActionListener(new java.awt.event.ActionListener(){
+            public void actionPerformed(java.awt.event.ActionEvent evt){
+                btnDetalhesActionPerformed(evt);
+            }
+        });
 
         btnCriar.setText("Criar");
         btnCriar.addActionListener(new java.awt.event.ActionListener() {
@@ -118,9 +127,13 @@ public class Gerenciamento extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jLabel1)
+                            .addComponent(jLabel1)
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addComponent(jLabel10)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                        .addComponent(jLabel11))
                                     .addGroup(layout.createSequentialGroup()
                                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                             .addComponent(btnJogar, javax.swing.GroupLayout.PREFERRED_SIZE, 98, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -134,32 +147,27 @@ public class Gerenciamento extends javax.swing.JFrame {
                                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                                             .addComponent(jLabel8)
                                             .addComponent(btnRelatorio, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                            .addComponent(btnSimular, javax.swing.GroupLayout.PREFERRED_SIZE, 98, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                        .addGap(166, 166, 166)))
-                                .addGap(9, 9, 9))
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(jLabel14)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(lblPontos)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(jLabel3)
-                                .addGap(18, 18, 18)
-                                .addComponent(lblTime))
-                            .addComponent(jLabel9)
-                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                .addComponent(btnDetalhes, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(btnSair, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(btnCriar, javax.swing.GroupLayout.PREFERRED_SIZE, 98, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addComponent(jLabel12)
-                            .addComponent(jLabel13))
-                        .addContainerGap())
+                                            .addComponent(btnSimular, javax.swing.GroupLayout.PREFERRED_SIZE, 98, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                                .addGap(166, 166, 166)))
+                        .addGap(9, 9, 9))
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(jLabel10)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jLabel11)
-                        .addGap(341, 341, 341))))
+                        .addComponent(jLabel14)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(lblPontos)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(jLabel3)
+                        .addGap(18, 18, 18)
+                        .addComponent(lblTime))
+                    .addComponent(jLabel9)
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                        .addComponent(btnDetalhes, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(btnSair, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(btnCriar, javax.swing.GroupLayout.PREFERRED_SIZE, 98, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jLabel12)
+                    .addComponent(jLabel13))
+                .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -206,7 +214,7 @@ public class Gerenciamento extends javax.swing.JFrame {
         pack();
     }
 
-    private void btnCriarActionPerformed(java.awt.event.ActionEvent evt) { // Função para criar ou editar um time
+    private void btnCriarActionPerformed(java.awt.event.ActionEvent evt) { // Função para criar um time
         this.dispose();
         new CadastroTime().setVisible(true);
     }
@@ -237,12 +245,24 @@ public class Gerenciamento extends javax.swing.JFrame {
         jp.setVisible(true);
     }
 
-    private void btnNotaFiscalActionPerformed(java.awt.event.ActionEvent evt) { // A FAZER
-        // Função para nota fiscal dos salarios (JOptionPane)
+    private void btnNotaFiscalActionPerformed(java.awt.event.ActionEvent evt) { // Nota fiscal (A TERMINAR)
+        // LEMBRAR DE LEVAR A LISTA PARA A TELA DE JOGAR SENAO FODE TUDO
+        int n = lista.size();
+        double total = 0;
+        String nomes = "";
+        for(int i = 0; i < n; i++){
+            total += lista.get(i).getSalario();
+            nomes += lista.get(i).getNome() + "\n";
+        }
+        JOptionPane.showMessageDialog(null, nomes + "\n\n============================\n\nTotal: R$" + total, "Notinha", JOptionPane.INFORMATION_MESSAGE);
     }
 
     private void btnRelatorioActionPerformed(java.awt.event.ActionEvent evt) { // A FAZER
         // Função para emitir um relatório de cada jogador (JOptionPane)
+    }
+
+    private void btnDetalhesActionPerformed(java.awt.event.ActionEvent evt){ // Detalhes do time
+        JOptionPane.showMessageDialog(null, time.getDados(), "Detalhes do time", JOptionPane.INFORMATION_MESSAGE);
     }
 
     public void setNomeTime(String time){ // Método para alterar o nome do time
@@ -274,11 +294,16 @@ public class Gerenciamento extends javax.swing.JFrame {
         if(time.getPartidas() == 5)
             setTravarBotoes();
     }
+
+    public void setLista(List<Funcionario> lista){
+        this.lista = new ArrayList<>();
+        this.lista = lista;
+    }
     
     public static void main(String args[]) {
         try {
             for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
+                if ("Metal".equals(info.getName())) {
                     javax.swing.UIManager.setLookAndFeel(info.getClassName());
                     break;
                 }
@@ -323,4 +348,5 @@ public class Gerenciamento extends javax.swing.JFrame {
     private javax.swing.JLabel lblPontos;
     private javax.swing.JLabel lblTime;
     private Time time;
+    private List<Funcionario> lista;
 }
