@@ -118,11 +118,12 @@ public class CadastroTime extends javax.swing.JFrame {
                 double salario = Double.parseDouble(JOptionPane.showInputDialog(null, "Insira o salário:", "Salário", JOptionPane.QUESTION_MESSAGE));
                 String tipo = opcoes[op];
                 double bonus = Double.parseDouble(JOptionPane.showInputDialog(null, "Insira um bônus:", "Bônus", JOptionPane.QUESTION_MESSAGE));
-                double diretosImagem = Double.parseDouble(JOptionPane.showInputDialog(null, "Insira o valor dos direitos de imagem:", "Diretos de Imagem", JOptionPane.QUESTION_MESSAGE));
+                double direitosImagem = Double.parseDouble(JOptionPane.showInputDialog(null, "Insira o valor dos direitos de imagem:", "Diretos de Imagem", JOptionPane.QUESTION_MESSAGE));
                 op = JOptionPane.showOptionDialog(null, "Pé dominante:", "Pézinho de Deus", JOptionPane.DEFAULT_OPTION, JOptionPane.INFORMATION_MESSAGE, null, pe, pe[0]);
                 String peDominante = pe[0];
                 double altura = Double.parseDouble(JOptionPane.showInputDialog(null, "Insira a altura:", "Altura", JOptionPane.QUESTION_MESSAGE));
-                Jogador j = new Jogador(nome, idade, salario, tipo, bonus, diretosImagem, peDominante, altura);
+                Jogador j = new Jogador(nome, idade, salario, tipo, direitosImagem, peDominante, altura);
+                j.calcularSalario(bonus, direitosImagem);
                 lista.add(j);
             }
             else{ // Comissão Técnica
@@ -132,7 +133,8 @@ public class CadastroTime extends javax.swing.JFrame {
                 double salario = Double.parseDouble(JOptionPane.showInputDialog(null, "Insira o salário:", "Salário", JOptionPane.QUESTION_MESSAGE));
                 String tipo = opcoes[1];
                 double bonus = Double.parseDouble(JOptionPane.showInputDialog(null, "Insira um bônus:", "Bônus", JOptionPane.QUESTION_MESSAGE));
-                Funcionario f = new Funcionario(nome, idade, salario, tipo, bonus);
+                Funcionario f = new Funcionario(nome, idade, salario, tipo);
+                f.calcularSalario(bonus);
                 lista.add(f);
             }
         }
@@ -147,15 +149,17 @@ public class CadastroTime extends javax.swing.JFrame {
                 String tipo = opcoes[op];
                 double bonus = Double.parseDouble(JOptionPane.showInputDialog(null, "Insira um bônus:", "Bônus", JOptionPane.QUESTION_MESSAGE));
                 if(op == 0){ // Jogador
-                    double diretosImagem = Double.parseDouble(JOptionPane.showInputDialog(null, "Insira o valor dos direitos de imagem:", "Diretos de Imagem", JOptionPane.QUESTION_MESSAGE));
+                    double direitosImagem = Double.parseDouble(JOptionPane.showInputDialog(null, "Insira o valor dos direitos de imagem:", "Diretos de Imagem", JOptionPane.QUESTION_MESSAGE));
                     op = JOptionPane.showOptionDialog(null, "Pé dominante:", "Pézinho de Deus", JOptionPane.DEFAULT_OPTION, JOptionPane.INFORMATION_MESSAGE, null, pe, pe[0]);
                     String peDominante = pe[op];
                     double altura = Double.parseDouble(JOptionPane.showInputDialog(null, "Insira a altura:", "Altura", JOptionPane.QUESTION_MESSAGE));
-                    Jogador j = new Jogador(nome, idade, salario, tipo, bonus, diretosImagem, peDominante, altura);
+                    Jogador j = new Jogador(nome, idade, salario, tipo, direitosImagem, peDominante, altura);
+                    j.calcularSalario(bonus, direitosImagem);
                     lista.add(j);
                 }
                 else{ // Comissão Técnica
-                    Funcionario f = new Funcionario(nome, idade, salario, tipo, bonus);
+                    Funcionario f = new Funcionario(nome, idade, salario, tipo);
+                    f.calcularSalario(bonus);
                     lista.add(f);
                 }
                 op = JOptionPane.showOptionDialog(null, "Selecione uma das opções", "Escolhas da vida", JOptionPane.DEFAULT_OPTION, JOptionPane.INFORMATION_MESSAGE, null, fim, fim[0]);

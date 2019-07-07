@@ -164,13 +164,14 @@ public class JogarPartida extends javax.swing.JFrame {
                     }
                     lista.get(jogador).marcar(); // Achando, marca o gol
                     this.t.setLista(lista); // Salva na lista
+                    setStatus(this.t.getSigla() + ": " + jogadas[j]);
                 }
-                else{
+                else{ // Contra
                     int p = Integer.parseInt(lblContra.getText());
                     p++;
                     setContra(Integer.toString(p));
+                    setStatus("ADV: " + jogadas[j]);
                 }
-                setStatus(jogadas[j] + time[t]);
             }
             else if(j == 3){ // Falta
                 int f = random.nextInt(3);
@@ -179,11 +180,15 @@ public class JogarPartida extends javax.swing.JFrame {
                         amarelos++;
                     else if(f == 2)
                         vermelhos++;
+                    setStatus(this.t.getSigla() + ": " + jogadas[j] + falta[f]);
                 }
-                setStatus(jogadas[j] + falta[f] + time[t]);
+                setStatus("ADV: " + jogadas[j] + falta[f]);
             }
             else{
-                setStatus(jogadas[j] + time[t]);
+                if(t == 0)
+                    setStatus(this.t.getSigla() + ": " + jogadas[j]);
+                else 
+                    setStatus("ADV: " + jogadas[j]);
             }
         }       
     }

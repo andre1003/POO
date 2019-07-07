@@ -5,11 +5,11 @@ public class Funcionario{
     private String tipo;
     private String marcarReuniao;
 
-    public Funcionario(String nome, int idade, double salario, String tipo, double bonus){ // Construtor
+    public Funcionario(String nome, int idade, double salario, String tipo){ // Construtor
         this.nome = nome;
         this.idade = idade;
+        this.salario = salario;
         this.tipo = tipo;
-        calcularSalario(salario, bonus);
     }
 
     public void setNome(String nome){ // Método set para o nome
@@ -44,9 +44,13 @@ public class Funcionario{
         return tipo;
     }
 
-    private void calcularSalario(double salario, double bonus){ // Método para calcular o salário
+    public void calcularSalario(double bonus){ // Método para calcular o salário
         salario += bonus;
         setSalario(salario);
+    }
+
+    public void calcularSalario(double bonus, double direitosImagem){ // Método para sobrecarregar o calcularSalario()
+        setSalario(salario + bonus + direitosImagem);
     }
 
     public void marcar(){

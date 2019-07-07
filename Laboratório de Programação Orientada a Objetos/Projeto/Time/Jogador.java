@@ -4,8 +4,8 @@ public class Jogador extends Funcionario{
     private double altura;
     private int gols;
 
-    public Jogador(String nome, int idade, double salario, String tipo,  double bonus, double diretosImagem, String peDominante, double altura){ // Construtor
-        super(nome, idade, salario, tipo, bonus);
+    public Jogador(String nome, int idade, double salario, String tipo,  double diretosImagem, String peDominante, double altura){ // Construtor
+        super(nome, idade, salario, tipo);
         this.diretosImagem = diretosImagem;
         this.peDominate = peDominante;
         this.altura = altura;
@@ -26,10 +26,6 @@ public class Jogador extends Funcionario{
 
     public void marcar(){
         gols++;
-    }
-
-    private void calcularSalario(double salario, double bonus){ // Método para sobrescrever o calcularSalario()
-        setSalario(salario + bonus + diretosImagem);
     }
 
     public double getDireitosImagem(){ // Método get para diretos de imagem
