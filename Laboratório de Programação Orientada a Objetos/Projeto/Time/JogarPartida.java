@@ -123,7 +123,6 @@ public class JogarPartida extends javax.swing.JFrame {
 
     private String[] jogadas = {"Olha o gol...olha o gol...goooooooool!", "Na traaaaaave", "Bateu mal", "Falta!... "};
     private String[] falta = {"Nenhum cartão", "Cartão amarelo", "Cartão vermelho"};
-    private String[] time = {" A favor", " Contra"};
 
     private int amarelos = 0;
     private int vermelhos = 0;
@@ -164,13 +163,13 @@ public class JogarPartida extends javax.swing.JFrame {
                     }
                     lista.get(jogador).marcar(); // Achando, marca o gol
                     this.t.setLista(lista); // Salva na lista
-                    setStatus(this.t.getSigla() + ": " + jogadas[j]);
+                    setStatus(this.t.getSigla() + " - " + jogadas[j]);
                 }
                 else{ // Contra
                     int p = Integer.parseInt(lblContra.getText());
                     p++;
                     setContra(Integer.toString(p));
-                    setStatus("ADV: " + jogadas[j]);
+                    setStatus("ADV - " + jogadas[j]);
                 }
             }
             else if(j == 3){ // Falta
@@ -180,15 +179,15 @@ public class JogarPartida extends javax.swing.JFrame {
                         amarelos++;
                     else if(f == 2)
                         vermelhos++;
-                    setStatus(this.t.getSigla() + ": " + jogadas[j] + falta[f]);
+                    setStatus(this.t.getSigla() + " - " + jogadas[j] + falta[f]);
                 }
-                setStatus("ADV: " + jogadas[j] + falta[f]);
+                setStatus("ADV - " + jogadas[j] + falta[f]);
             }
             else{
                 if(t == 0)
-                    setStatus(this.t.getSigla() + ": " + jogadas[j]);
+                    setStatus(this.t.getSigla() + " - " + jogadas[j]);
                 else 
-                    setStatus("ADV: " + jogadas[j]);
+                    setStatus("ADV - " + jogadas[j]);
             }
         }       
     }
@@ -197,6 +196,7 @@ public class JogarPartida extends javax.swing.JFrame {
         // Sai da partida
         Gerenciamento g = new Gerenciamento();
         g.setTime(t);
+        g.setDesbloquearBotoes();
         this.dispose();
         g.setVisible(true);
     }
@@ -230,10 +230,10 @@ public class JogarPartida extends javax.swing.JFrame {
     }
 
     public void resultado(int gols_marcados, int gols_sofridos, int cartao_amarelo, int cartao_vermelho){
-        t.setGolsMarcados(gols_marcados); // Gols marcados
-        t.setGolsSofridos(gols_sofridos); // Gols sofridos
-        t.setCartaoAmarelo(cartao_amarelo); // Cartões amarelos
-        t.setCartaoVermelho(cartao_vermelho); // Cartões vermelhos
+        t.setGolsMarcados(t.getGolsMarcados() + gols_marcados); // Gols marcados
+        t.setGolsSofridos(t.getGolsSofridos() + gols_sofridos); // Gols sofridos
+        t.setCartaoAmarelo(t.getCartaoAmarelo() + cartao_amarelo); // Cartões amarelos
+        t.setCartaoVermelho(t.getCartaoVermelho() + cartao_vermelho); // Cartões vermelhos
         if(gols_marcados > gols_sofridos){ // Vitória
             t.setVitorias(t.getVitorias() + 1);
             t.setPontos(t.getPontos() + 3);

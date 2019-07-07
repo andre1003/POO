@@ -8,6 +8,10 @@ public class Gerenciamento extends javax.swing.JFrame {
     
     public Gerenciamento() {
         initComponents();
+        if(lblTime.getText().equals("Nenhum"))
+            setTravarTodosBotoes();
+        else
+            setDesbloquearBotoes();
     }
     
     @SuppressWarnings("unchecked")
@@ -328,6 +332,22 @@ public class Gerenciamento extends javax.swing.JFrame {
     public void setTravarBotoes(){ // Método para travar os botões de Jogar e Simular
         this.btnJogar.setEnabled(false);
         this.btnSimular.setEnabled(false);
+    }
+
+    public void setTravarTodosBotoes(){ // Trava todos os botões
+        this.btnDetalhes.setEnabled(false);
+        this.btnNotaFiscal.setEnabled(false);
+        this.btnRelatorio.setEnabled(false);
+        this.btnJogar.setEnabled(false);
+        this.btnSimular.setEnabled(false);
+    }
+
+    public void setDesbloquearBotoes(){
+        this.btnDetalhes.setEnabled(true);
+        this.btnNotaFiscal.setEnabled(true);
+        this.btnRelatorio.setEnabled(true);
+        this.btnJogar.setEnabled(true);
+        this.btnSimular.setEnabled(true);
     }
 
     public void setTime(Time time){ // Atualiza os dados do time

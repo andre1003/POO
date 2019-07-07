@@ -102,76 +102,94 @@ public class CadastroTime extends javax.swing.JFrame {
     }
 
     private void btnCriarActionPerformed(java.awt.event.ActionEvent evt) { // Criar um novo time
-        Gerenciamento g = new Gerenciamento(); // Inicializa os componentes da tela principal
-        List<Funcionario> lista = new ArrayList<>();
+        boolean validado = validarEntradas();
+        if(validado == true){
+            Gerenciamento g = new Gerenciamento(); // Inicializa os componentes da tela principal
+            List<Funcionario> lista = new ArrayList<>();
 
-        String[] opcoes = {"Jogador", "Comissão Técnica"}; // Opções de cadastro
-        String[] fim = {"Continuar", "Parar"}; // Para ou não
-        String[] pe = {"Direito", "Esquerdo"}; // Pé dominante
-        int op = 0;
-        JOptionPane.showMessageDialog(null, "Você deve cadastrar 11 jogadores e 1 pessoa da comissão técnica", "Cadastro Obrigatório", JOptionPane.INFORMATION_MESSAGE);
-        for(int i = 0; i < 12; i++){
-            if(i < 11){ // Jogador
-                JOptionPane.showMessageDialog(null, "Cadastrando o " + (i + 1) + "º Jogador", "Jogador", JOptionPane.INFORMATION_MESSAGE);
-                String nome = JOptionPane.showInputDialog(null, "Insira o nome:", "Nome", JOptionPane.QUESTION_MESSAGE);
-                int idade = Integer.parseInt(JOptionPane.showInputDialog(null, "Insira a idade:", "Idade", JOptionPane.QUESTION_MESSAGE));
-                double salario = Double.parseDouble(JOptionPane.showInputDialog(null, "Insira o salário:", "Salário", JOptionPane.QUESTION_MESSAGE));
-                String tipo = opcoes[op];
-                double bonus = Double.parseDouble(JOptionPane.showInputDialog(null, "Insira um bônus:", "Bônus", JOptionPane.QUESTION_MESSAGE));
-                double direitosImagem = Double.parseDouble(JOptionPane.showInputDialog(null, "Insira o valor dos direitos de imagem:", "Diretos de Imagem", JOptionPane.QUESTION_MESSAGE));
-                op = JOptionPane.showOptionDialog(null, "Pé dominante:", "Pézinho de Deus", JOptionPane.DEFAULT_OPTION, JOptionPane.INFORMATION_MESSAGE, null, pe, pe[0]);
-                String peDominante = pe[0];
-                double altura = Double.parseDouble(JOptionPane.showInputDialog(null, "Insira a altura:", "Altura", JOptionPane.QUESTION_MESSAGE));
-                Jogador j = new Jogador(nome, idade, salario, tipo, direitosImagem, peDominante, altura);
-                j.calcularSalario(bonus, direitosImagem);
-                lista.add(j);
-            }
-            else{ // Comissão Técnica
-                JOptionPane.showMessageDialog(null, "Comissão técnica", "Comissão Técnica", JOptionPane.INFORMATION_MESSAGE);
-                String nome = JOptionPane.showInputDialog(null, "Insira o nome:", "Nome", JOptionPane.QUESTION_MESSAGE);
-                int idade = Integer.parseInt(JOptionPane.showInputDialog(null, "Insira a idade:", "Idade", JOptionPane.QUESTION_MESSAGE));
-                double salario = Double.parseDouble(JOptionPane.showInputDialog(null, "Insira o salário:", "Salário", JOptionPane.QUESTION_MESSAGE));
-                String tipo = opcoes[1];
-                double bonus = Double.parseDouble(JOptionPane.showInputDialog(null, "Insira um bônus:", "Bônus", JOptionPane.QUESTION_MESSAGE));
-                Funcionario f = new Funcionario(nome, idade, salario, tipo);
-                f.calcularSalario(bonus);
-                lista.add(f);
-            }
-        }
-
-        op = JOptionPane.showOptionDialog(null, "Selecione uma das opções", "Escolhas da vida", JOptionPane.DEFAULT_OPTION, JOptionPane.INFORMATION_MESSAGE, null, fim, fim[0]);
-        if(op == 0){ // Inserir mais
-            while(true){ // Inserir funcionários
-                op = JOptionPane.showOptionDialog(null, "Selecione uma das opções", "Jogador ou Comissão", JOptionPane.DEFAULT_OPTION, JOptionPane.INFORMATION_MESSAGE, null, opcoes, opcoes[0]);
-                String nome = JOptionPane.showInputDialog(null, "Insira o nome:", "Nome", JOptionPane.QUESTION_MESSAGE);
-                int idade = Integer.parseInt(JOptionPane.showInputDialog(null, "Insira a idade:", "Idade", JOptionPane.QUESTION_MESSAGE));
-                double salario = Double.parseDouble(JOptionPane.showInputDialog(null, "Insira o salário:", "Salário", JOptionPane.QUESTION_MESSAGE));
-                String tipo = opcoes[op];
-                double bonus = Double.parseDouble(JOptionPane.showInputDialog(null, "Insira um bônus:", "Bônus", JOptionPane.QUESTION_MESSAGE));
-                if(op == 0){ // Jogador
-                    double direitosImagem = Double.parseDouble(JOptionPane.showInputDialog(null, "Insira o valor dos direitos de imagem:", "Diretos de Imagem", JOptionPane.QUESTION_MESSAGE));
-                    op = JOptionPane.showOptionDialog(null, "Pé dominante:", "Pézinho de Deus", JOptionPane.DEFAULT_OPTION, JOptionPane.INFORMATION_MESSAGE, null, pe, pe[0]);
-                    String peDominante = pe[op];
-                    double altura = Double.parseDouble(JOptionPane.showInputDialog(null, "Insira a altura:", "Altura", JOptionPane.QUESTION_MESSAGE));
-                    Jogador j = new Jogador(nome, idade, salario, tipo, direitosImagem, peDominante, altura);
-                    j.calcularSalario(bonus, direitosImagem);
-                    lista.add(j);
+            String[] opcoes = {"Jogador", "Comissão Técnica"}; // Opções de cadastro
+            String[] fim = {"Continuar", "Parar"}; // Para ou não
+            String[] pe = {"Direito", "Esquerdo"}; // Pé dominante
+            int op = 0;
+            JOptionPane.showMessageDialog(null, "Você deve cadastrar 11 jogadores e 1 pessoa da comissão técnica", "Cadastro Obrigatório", JOptionPane.INFORMATION_MESSAGE);
+            try{
+                for(int i = 0; i < 12; i++){
+                    if(i < 11){ // Jogador
+                        JOptionPane.showMessageDialog(null, "Cadastrando o " + (i + 1) + "º Jogador", "Jogador", JOptionPane.INFORMATION_MESSAGE);
+                        String nome = JOptionPane.showInputDialog(null, "Insira o nome:", "Nome", JOptionPane.QUESTION_MESSAGE);
+                        int idade = Integer.parseInt(JOptionPane.showInputDialog(null, "Insira a idade:", "Idade", JOptionPane.QUESTION_MESSAGE));
+                        double salario = Double.parseDouble(JOptionPane.showInputDialog(null, "Insira o salário:", "Salário", JOptionPane.QUESTION_MESSAGE));
+                        String tipo = opcoes[op];
+                        double bonus = Double.parseDouble(JOptionPane.showInputDialog(null, "Insira um bônus:", "Bônus", JOptionPane.QUESTION_MESSAGE));
+                        double direitosImagem = Double.parseDouble(JOptionPane.showInputDialog(null, "Insira o valor dos direitos de imagem:", "Diretos de Imagem", JOptionPane.QUESTION_MESSAGE));
+                        op = JOptionPane.showOptionDialog(null, "Pé dominante:", "Pézinho de Deus", JOptionPane.DEFAULT_OPTION, JOptionPane.INFORMATION_MESSAGE, null, pe, pe[0]);
+                        String peDominante = pe[0];
+                        double altura = Double.parseDouble(JOptionPane.showInputDialog(null, "Insira a altura:", "Altura", JOptionPane.QUESTION_MESSAGE));
+                        Jogador j = new Jogador(nome, idade, salario, tipo, direitosImagem, peDominante, altura);
+                        j.calcularSalario(bonus, direitosImagem);
+                        lista.add(j);
+                    }
+                    else{ // Comissão Técnica
+                        JOptionPane.showMessageDialog(null, "Comissão técnica", "Comissão Técnica", JOptionPane.INFORMATION_MESSAGE);
+                        String nome = JOptionPane.showInputDialog(null, "Insira o nome:", "Nome", JOptionPane.QUESTION_MESSAGE);
+                        int idade = Integer.parseInt(JOptionPane.showInputDialog(null, "Insira a idade:", "Idade", JOptionPane.QUESTION_MESSAGE));
+                        double salario = Double.parseDouble(JOptionPane.showInputDialog(null, "Insira o salário:", "Salário", JOptionPane.QUESTION_MESSAGE));
+                        String tipo = opcoes[1];
+                        double bonus = Double.parseDouble(JOptionPane.showInputDialog(null, "Insira um bônus:", "Bônus", JOptionPane.QUESTION_MESSAGE));
+                        Funcionario f = new Funcionario(nome, idade, salario, tipo);
+                        f.calcularSalario(bonus);
+                        lista.add(f);
+                    }
                 }
-                else{ // Comissão Técnica
-                    Funcionario f = new Funcionario(nome, idade, salario, tipo);
-                    f.calcularSalario(bonus);
-                    lista.add(f);
-                }
+    
                 op = JOptionPane.showOptionDialog(null, "Selecione uma das opções", "Escolhas da vida", JOptionPane.DEFAULT_OPTION, JOptionPane.INFORMATION_MESSAGE, null, fim, fim[0]);
-                if(op == 1)
-                    break;
+                if(op == 0){ // Inserir mais
+                    while(true){ // Inserir funcionários
+                        op = JOptionPane.showOptionDialog(null, "Selecione uma das opções", "Jogador ou Comissão", JOptionPane.DEFAULT_OPTION, JOptionPane.INFORMATION_MESSAGE, null, opcoes, opcoes[0]);
+                        String nome = JOptionPane.showInputDialog(null, "Insira o nome:", "Nome", JOptionPane.QUESTION_MESSAGE);
+                        int idade = Integer.parseInt(JOptionPane.showInputDialog(null, "Insira a idade:", "Idade", JOptionPane.QUESTION_MESSAGE));
+                        double salario = Double.parseDouble(JOptionPane.showInputDialog(null, "Insira o salário:", "Salário", JOptionPane.QUESTION_MESSAGE));
+                        String tipo = opcoes[op];
+                        double bonus = Double.parseDouble(JOptionPane.showInputDialog(null, "Insira um bônus:", "Bônus", JOptionPane.QUESTION_MESSAGE));
+                        if(op == 0){ // Jogador
+                            double direitosImagem = Double.parseDouble(JOptionPane.showInputDialog(null, "Insira o valor dos direitos de imagem:", "Diretos de Imagem", JOptionPane.QUESTION_MESSAGE));
+                            op = JOptionPane.showOptionDialog(null, "Pé dominante:", "Pézinho de Deus", JOptionPane.DEFAULT_OPTION, JOptionPane.INFORMATION_MESSAGE, null, pe, pe[0]);
+                            String peDominante = pe[op];
+                            double altura = Double.parseDouble(JOptionPane.showInputDialog(null, "Insira a altura:", "Altura", JOptionPane.QUESTION_MESSAGE));
+                            Jogador j = new Jogador(nome, idade, salario, tipo, direitosImagem, peDominante, altura);
+                            j.calcularSalario(bonus, direitosImagem);
+                            lista.add(j);
+                        }
+                        else{ // Comissão Técnica
+                            Funcionario f = new Funcionario(nome, idade, salario, tipo);
+                            f.calcularSalario(bonus);
+                            lista.add(f);
+                        }
+                        op = JOptionPane.showOptionDialog(null, "Selecione uma das opções", "Escolhas da vida", JOptionPane.DEFAULT_OPTION, JOptionPane.INFORMATION_MESSAGE, null, fim, fim[0]);
+                        if(op == 1)
+                            break;
+                    }
+                }
+                int ano = Integer.parseInt(spnAno.getValue().toString());
+                time = new Time(tfdNome.getText(), tfdSigla.getText(), ano, lista); // Cria um novo time
+                g.setTime(time); // Passa o time para a tela principal
+                g.setDesbloquearBotoes();
+                this.dispose();
+                g.setVisible(true);
+            }
+            catch(Exception e){
+                JOptionPane.showMessageDialog(null, "Uma letra foi inserida no lugar de um número!", "ERRO", JOptionPane.ERROR_MESSAGE);
             }
         }
+    }
 
-        time = new Time(tfdNome.getText(), tfdSigla.getText(), lista); // Cria um novo time
-        g.setTime(time); // Passa o time para a tela principal
-        this.dispose();
-        g.setVisible(true);
+    private boolean validarEntradas(){ // Valida os campos de input
+        if(tfdNome.getText().equals("") || tfdSigla.getText().equals("")){
+            JOptionPane.showMessageDialog(null, "Nome ou Sigla nulos! Insira algum nome!", "Nome ou Sigla", JOptionPane.WARNING_MESSAGE);
+            return false;
+        }
+        else
+            return true;
     }
 
     public static void main(String args[]) {
