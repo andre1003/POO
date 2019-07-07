@@ -1,4 +1,3 @@
-import Funcionarios.Funcionario;
 import java.util.List;
 import java.util.ArrayList;
 
@@ -14,7 +13,7 @@ public class Time{
     private int gols_sofridos;
     private int cartao_amarelo;
     private int cartao_vermelho;
-    private List<Funcionario> lista;
+    private List<Funcionario> lista = new ArrayList<>();
 
     public Time(String nome, String sigla, List<Funcionario> lista){ // Construtor
         this.nome = nome;

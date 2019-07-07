@@ -1,4 +1,3 @@
-import Funcionarios.Funcionario;
 import java.util.List;
 import java.util.ArrayList;
 import java.util.Random;
@@ -229,6 +228,34 @@ public class Gerenciamento extends javax.swing.JFrame {
         int num = random.nextInt(4); // Gera a pontuação aleatoriamente
         while(num == 2) // Não existe 2 pontos no futebol, então arruma outro
             num = random.nextInt(4);
+        
+        if(num == 0){ // Derrota
+            int d = time.getDerrotas() + 1;
+            time.setDerrotas(d);
+            time.setGolsSofridos(time.getGolsSofridos() + 1);
+        }      
+        else if(num == 1){ // Empate
+            int e = time.getEmpates() + 1;
+            time.setEmpates(e);
+        }
+        else{ // Vitória
+            int v = time.getVitorias() + 1;
+            time.setVitorias(v);
+            time.setGolsMarcados(time.getGolsMarcados() + 1);
+
+            List<Funcionario> lista = new ArrayList<>();
+            lista = time.getLista(); // Salva a lista de funcionarios
+            int n = lista.size();
+            int jogador = random.nextInt(n); // Procura um jogador randômico
+            while(true){ // Procura até achar
+                if(lista.get(jogador).getTipo().equals("Jogador"))
+                    break;
+                else
+                    jogador = random.nextInt(n);
+            }
+            lista.get(jogador).marcar(); // Achando, marca o gol
+            time.setLista(lista); // Salva na lista
+        }
         num += time.getPontos(); // Soma com os pontos atuais
         time.setPontos(num); // Altera no time
         int partidas = time.getPartidas() + 1; // Soma mais um nas partidas jogadas
@@ -245,20 +272,41 @@ public class Gerenciamento extends javax.swing.JFrame {
         jp.setVisible(true);
     }
 
-    private void btnNotaFiscalActionPerformed(java.awt.event.ActionEvent evt) { // Nota fiscal (A TERMINAR)
-        // LEMBRAR DE LEVAR A LISTA PARA A TELA DE JOGAR SENAO FODE TUDO
+    private void btnNotaFiscalActionPerformed(java.awt.event.ActionEvent evt) { // Nota fiscal
+        List<Funcionario> lista = new ArrayList<>();
+        lista = time.getLista(); // Pega a lista de jogadores
         int n = lista.size();
         double total = 0;
-        String nomes = "";
-        for(int i = 0; i < n; i++){
+        String dados = "";
+        for(int i = 0; i < n; i++){ // Pega todos os dados
             total += lista.get(i).getSalario();
-            nomes += lista.get(i).getNome() + "\n";
+            dados += lista.get(i).notaFiscal() + "\n\n";
         }
-        JOptionPane.showMessageDialog(null, nomes + "\n\n============================\n\nTotal: R$" + total, "Notinha", JOptionPane.INFORMATION_MESSAGE);
+        JOptionPane.showMessageDialog(null, dados + "\n\n============================\n\nTotal: R$" + total, "Notinha", JOptionPane.INFORMATION_MESSAGE);
     }
 
-    private void btnRelatorioActionPerformed(java.awt.event.ActionEvent evt) { // A FAZER
-        // Função para emitir um relatório de cada jogador (JOptionPane)
+    private void btnRelatorioActionPerformed(java.awt.event.ActionEvent evt) { // Relatório individual
+        List<Funcionario> jogadores = new ArrayList<>();
+        List<Funcionario> comissao = new ArrayList<>();
+        List<Funcionario> aux = new ArrayList<>();
+        aux = time.getLista();
+        int n = aux.size();
+        for(int i = 0; i < n; i++){ // Separa os jogadores dos demais
+            if(aux.get(i).getTipo().equals("Jogador"))
+                jogadores.add(aux.get(i));
+            else
+                comissao.add(aux.get(i));
+        }
+
+        n = jogadores.size();
+        for(int i = 0; i < n; i++){
+            JOptionPane.showMessageDialog(null, jogadores.get(i).getDados(), "Dados", JOptionPane.INFORMATION_MESSAGE);
+        }
+
+        n = comissao.size();
+        for(int i = 0; i < n; i++){
+            JOptionPane.showMessageDialog(null, comissao.get(i).getDados(), "Dados", JOptionPane.INFORMATION_MESSAGE);
+        }
     }
 
     private void btnDetalhesActionPerformed(java.awt.event.ActionEvent evt){ // Detalhes do time
@@ -293,11 +341,6 @@ public class Gerenciamento extends javax.swing.JFrame {
         setPontos(Integer.toString(time.getPontos()));
         if(time.getPartidas() == 5)
             setTravarBotoes();
-    }
-
-    public void setLista(List<Funcionario> lista){
-        this.lista = new ArrayList<>();
-        this.lista = lista;
     }
     
     public static void main(String args[]) {
@@ -348,5 +391,4 @@ public class Gerenciamento extends javax.swing.JFrame {
     private javax.swing.JLabel lblPontos;
     private javax.swing.JLabel lblTime;
     private Time time;
-    private List<Funcionario> lista;
 }

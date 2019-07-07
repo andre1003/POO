@@ -1,4 +1,6 @@
 import java.util.Random;
+import java.util.List;
+import java.util.ArrayList;
 
 public class JogarPartida extends javax.swing.JFrame {
     
@@ -119,7 +121,7 @@ public class JogarPartida extends javax.swing.JFrame {
         pack();
     }
 
-    private String[] jogadas = {"Olha o gol, olha o gol, olha o gol, goooooooool!", "Na traaaaaave", "Bateu mal", "Falta!... "};
+    private String[] jogadas = {"Olha o gol...olha o gol...goooooooool!", "Na traaaaaave", "Bateu mal", "Falta!... "};
     private String[] falta = {"Nenhum cartão", "Cartão amarelo", "Cartão vermelho"};
     private String[] time = {" A favor", " Contra"};
 
@@ -150,6 +152,18 @@ public class JogarPartida extends javax.swing.JFrame {
                     int p = Integer.parseInt(lblAFavor.getText());
                     p++;
                     setAFavor(Integer.toString(p));
+                    List<Funcionario> lista = new ArrayList<>();
+                    lista = this.t.getLista(); // Salva a lista de funcionarios
+                    int n = lista.size();
+                    int jogador = random.nextInt(n); // Procura um jogador randômico
+                    while(true){ // Procura até achar
+                        if(lista.get(jogador).getTipo().equals("Jogador"))
+                            break;
+                        else
+                            jogador = random.nextInt(n);
+                    }
+                    lista.get(jogador).marcar(); // Achando, marca o gol
+                    this.t.setLista(lista); // Salva na lista
                 }
                 else{
                     int p = Integer.parseInt(lblContra.getText());
