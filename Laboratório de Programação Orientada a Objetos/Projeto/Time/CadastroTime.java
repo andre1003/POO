@@ -16,6 +16,7 @@ public class CadastroTime extends javax.swing.JFrame {
 
     public CadastroTime() {
         initComponents();
+        this.setLocationRelativeTo(null);
     }
 
     @SuppressWarnings("unchecked")

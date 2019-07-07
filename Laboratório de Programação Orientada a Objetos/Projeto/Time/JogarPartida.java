@@ -6,6 +6,7 @@ public class JogarPartida extends javax.swing.JFrame {
     
     public JogarPartida() {
         initComponents();
+        this.setLocationRelativeTo(null);
     }
 
     @SuppressWarnings("unchecked")

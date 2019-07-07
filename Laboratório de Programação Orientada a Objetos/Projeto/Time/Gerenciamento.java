@@ -10,8 +10,8 @@ public class Gerenciamento extends javax.swing.JFrame {
         initComponents();
         if(lblTime.getText().equals("Nenhum"))
             setTravarTodosBotoes();
-        else
-            setDesbloquearBotoes();
+        
+        this.setLocationRelativeTo(null);
     }
     
     @SuppressWarnings("unchecked")
@@ -286,7 +286,7 @@ public class Gerenciamento extends javax.swing.JFrame {
             total += lista.get(i).getSalario();
             dados += lista.get(i).notaFiscal() + "\n\n";
         }
-        JOptionPane.showMessageDialog(null, dados + "\n\n============================\n\nTotal: R$" + total, "Notinha", JOptionPane.INFORMATION_MESSAGE);
+        JOptionPane.showMessageDialog(null, dados + "============================\n\nTotal: R$" + total, "Notinha", JOptionPane.INFORMATION_MESSAGE);
     }
 
     private void btnRelatorioActionPerformed(java.awt.event.ActionEvent evt) { // Relatório individual
