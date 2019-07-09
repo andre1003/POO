@@ -196,8 +196,8 @@ public class JogarPartida extends javax.swing.JFrame {
     private void btnSairActionPerformed(java.awt.event.ActionEvent evt) {
         // Sai da partida
         Gerenciamento g = new Gerenciamento();
-        g.setTime(t);
         g.setDesbloquearBotoes();
+        g.setTime(t);
         this.dispose();
         g.setVisible(true);
     }
